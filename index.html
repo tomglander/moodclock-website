@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MoodClock — Time Moves the Machine</title>
-  <meta name="description" content="MoodClock is a mechanical interpretation of time. Every minute resolves through motion, pulse, and resonance.">
+  <meta name="description" content="MoodClock is a mechanical interpretation of time. Every minute resolves through motion, pulse, resonance, and a subtle mechanical voice.">
   <style>
     :root{
       --bg:#000;
@@ -31,7 +31,7 @@
       align-items:center;
       justify-content:center;
       text-align:center;
-      padding:64px 0 32px;
+      padding:80px 0 40px;
     }
     .hero-inner{width:100%}
     .eyebrow{
@@ -63,10 +63,23 @@
       font-size:18px;
       line-height:1.55;
     }
+    .hero-frame{
+      width:min(560px,76vw);
+      margin:44px auto 0;
+      border:1px solid var(--hairline);
+      border-radius:30px;
+      background:#050505;
+      padding:18px 22px 34px;
+      overflow:visible;
+      box-sizing:border-box;
+    }
     .hero-image{
       display:block;
-      width:min(760px,92vw);
-      margin:32px auto 0;
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      margin:0 auto;
+      border-radius:0;
       filter:drop-shadow(0 0 24px rgba(0,190,255,.08));
     }
     section{padding:120px 0}
@@ -84,32 +97,37 @@
       font-size:20px;
       line-height:1.5;
     }
+
     .sequence{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-top:54px;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:48px;
     }
     .sequence figure{
       margin:0;
       border:1px solid var(--hairline);
       border-radius:28px;
-      overflow:hidden;
+      overflow:visible;
       background:#050505;
     }
-    .sequence img{display:block;width:100%;height:auto}
+    .sequence img{
+      display:block;
+      width:72%;
+      max-width:220px;
+      height:auto;
+      object-fit:contain;
+      margin:18px auto 12px;
+      padding:0;
+      background:#000;
+    }
     .sequence figcaption{
       padding:18px 18px 20px;
       color:var(--muted);
       font-size:14px;
-      line-height:1.55;
       letter-spacing:.02em;
     }
-    .sequence figcaption strong{
-      color:var(--fg);
-      font-size:12px;
-      letter-spacing:.14em;
-    }
+
     .statement{
       text-align:center;
       padding-top:160px;
@@ -124,17 +142,31 @@
       font-weight:650;
     }
     .statement span{color:var(--muted)}
+
     .detail-grid{
       display:grid;
       grid-template-columns:1.1fr .9fr;
       align-items:center;
       gap:70px;
     }
-    .detail-grid img{
+    .detail-image-frame{
       width:100%;
-      display:block;
-      border-radius:30px;
       border:1px solid var(--hairline);
+      border-radius:30px;
+      background:#050505;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:visible;
+      box-sizing:border-box;
+      padding:22px;
+    }
+    .detail-image-frame img{
+      display:block;
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      margin:0 auto;
     }
     .cta{
       text-align:center;
@@ -175,9 +207,14 @@
       flex-wrap:wrap;
     }
     .footer-links{display:flex;gap:18px}
+
     @media (max-width:800px){
       section{padding:88px 0}
+      .sequence{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:520px){
       .sequence{grid-template-columns:1fr}
+      .sequence img{width:72%;max-width:220px;height:auto;margin-bottom:14px}
       .detail-grid{grid-template-columns:1fr;gap:36px}
       .statement{padding-top:110px;padding-bottom:110px}
     }
@@ -191,33 +228,39 @@
       <h1>MOODCLOCK</h1>
       <div class="tagline">Time moves the machine.</div>
       <p class="subcopy">
-        The minute begins at 34. Then the machine takes over.
+        A living mechanical clock where every minute resolves through motion,
+        pulse, weight, and a subtle mechanical voice.
       </p>
-      <img class="hero-image" src="moodclock-before.png" alt="MoodClock mechanical clock face">
+      <div class="hero-frame"><img class="hero-image" src="moodclock-hero.png" alt="MoodClock mechanical clock face"></div>
     </div>
   </header>
 
   <main>
     <section>
       <div class="wrap">
-        <h2 class="section-title">34 becomes 35.</h2>
+        <h2 class="section-title">Every minute has weight.</h2>
         <p class="section-copy">
-          At the turn of the minute, 34 collapses. The mechanism advances.
-          A pulse moves outward. The fragments return and reform as 35.
+          The mechanism does not simply display the next minute. It moves through it.
+          The minute collapses, the machine advances, a pulse moves outward, and the
+          clock settles into its next state.
         </p>
 
         <div class="sequence">
           <figure>
-            <img src="moodclock-fragments.png" alt="34 breaking apart as the minute changes">
-            <figcaption><strong>1 — BREAK APART</strong><br>34 collapses as the minute changes.</figcaption>
+            <img src="moodclock-final-instant.png" alt="MoodClock immediately before the minute transition">
+            <figcaption><strong>Minute 03 — The final instant.</strong></figcaption>
           </figure>
           <figure>
-            <img src="moodclock-return.png" alt="Pulse expanding as minute fragments return">
-            <figcaption><strong>2 — PULSE &amp; RETURN</strong><br>The pulse expands. The fragments return.</figcaption>
+            <img src="moodclock-pulse-travel.png" alt="MoodClock pulse wave traveling outward">
+            <figcaption>The minute breaks. The pulse launches.</figcaption>
           </figure>
           <figure>
-            <img src="moodclock-reform.png" alt="Minute fragments reforming into 35">
-            <figcaption><strong>3 — REFORM</strong><br>The new minute takes shape.</figcaption>
+            <img src="moodclock-reform.png" alt="MoodClock minute fragments in the larger fragmentation state">
+            <figcaption>The fragments spread, then begin to reform.</figcaption>
+          </figure>
+          <figure>
+            <img src="moodclock-settled.png" alt="MoodClock settled at minute 04">
+            <figcaption><strong>Minute 04 — The machine has advanced.</strong></figcaption>
           </figure>
         </div>
       </div>
@@ -232,13 +275,16 @@
       </div>
     </section>
 
+
+
     <section>
       <div class="wrap detail-grid">
-        <img src="moodclock-complete.png" alt="MoodClock resolved at minute 35">
+        <div class="detail-image-frame"><img src="moodclock-final-04.png" alt="MoodClock settled at minute 04"></div>
         <div>
-          <h2 class="section-title">35.</h2>
+          <h2 class="section-title">Machined motion. Living energy.</h2>
           <p class="section-copy">
-            The transition is complete. The machine settles. A new minute has arrived.
+            Brass, steel, light, orbit, pulse and resonance work as one system.
+            The mechanics remain crisp. The emitted energy stays atmospheric.
           </p>
         </div>
       </div>
