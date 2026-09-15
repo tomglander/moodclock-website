@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MoodClock — Sound</title>
+  <meta name="description" content="Explore the MoodClock sound experience and what is included with the full audio unlock.">
+
+  <style>
+    :root{
+      --bg:#000;
+      --panel:#0a0a0a;
+      --text:#f5f5f7;
+      --muted:#9a9aa0;
+      --line:rgba(255,255,255,.10);
+      --soft:rgba(255,255,255,.055);
+      --accent:#d7d7dc;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{
+      scroll-behavior:smooth;
+      background:var(--bg);
+    }
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",
+                  "Helvetica Neue",Helvetica,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 48px));
+      margin:0 auto;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      background:rgba(0,0,0,.72);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      min-height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      font-size:15px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:24px;
+      align-items:center;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .nav-links a:hover{
+      color:var(--text);
+    }
+
+    .hero{
+      min-height:82vh;
+      display:grid;
+      align-items:center;
+      padding:110px 0 80px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .eyebrow{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:600;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:0;
+      max-width:930px;
+      font-size:clamp(56px, 10vw, 132px);
+      line-height:.88;
+      letter-spacing:-.065em;
+      font-weight:760;
+    }
+
+    .hero-copy{
+      margin:34px 0 0;
+      max-width:760px;
+      color:#c7c7cc;
+      font-size:clamp(20px, 2.4vw, 31px);
+      line-height:1.25;
+      letter-spacing:-.025em;
+    }
+
+    .hero-note{
+      margin-top:48px;
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .pulse{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:#fff;
+      box-shadow:0 0 18px rgba(255,255,255,.55);
+    }
+
+    section{
+      padding:120px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .section-head{
+      display:grid;
+      grid-template-columns:.75fr 1.5fr;
+      gap:60px;
+      align-items:start;
+      margin-bottom:72px;
+    }
+
+    .section-kicker{
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:13px;
+      font-weight:650;
+    }
+
+    h2{
+      margin:0;
+      font-size:clamp(38px, 5vw, 72px);
+      line-height:.98;
+      letter-spacing:-.045em;
+    }
+
+    .lede{
+      margin:24px 0 0;
+      max-width:760px;
+      color:#b7b7bd;
+      font-size:20px;
+      line-height:1.55;
+    }
+
+    .events{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .event{
+      min-height:340px;
+      padding:34px;
+      border:1px solid var(--line);
+      border-radius:26px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.08), transparent 45%),
+        var(--panel);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .event-number{
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:.16em;
+    }
+
+    .event h3{
+      margin:0 0 14px;
+      font-size:28px;
+      letter-spacing:-.03em;
+    }
+
+    .event p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:16px;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .tier{
+      padding:42px;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:var(--panel);
+    }
+
+    .tier.premium{
+      background:
+        radial-gradient(circle at 70% 0%, rgba(255,255,255,.10), transparent 36%),
+        linear-gradient(180deg, #111 0%, #070707 100%);
+    }
+
+    .tier-label{
+      display:inline-block;
+      margin-bottom:26px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+    }
+
+    .tier h3{
+      margin:0 0 16px;
+      font-size:38px;
+      letter-spacing:-.04em;
+    }
+
+    .tier p{
+      margin:0 0 28px;
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    li{
+      position:relative;
+      padding:15px 0 15px 28px;
+      border-top:1px solid var(--line);
+      color:#d7d7dc;
+      line-height:1.4;
+    }
+
+    li::before{
+      content:"";
+      position:absolute;
+      left:2px;
+      top:22px;
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#e7e7ea;
+    }
+
+    .manifesto{
+      max-width:930px;
+    }
+
+    .manifesto blockquote{
+      margin:0;
+      font-size:clamp(38px, 6vw, 78px);
+      line-height:1.02;
+      letter-spacing:-.05em;
+      font-weight:650;
+    }
+
+    .manifesto p{
+      margin:32px 0 0;
+      max-width:720px;
+      color:var(--muted);
+      font-size:19px;
+      line-height:1.6;
+    }
+
+    .purchase{
+      padding:130px 0 150px;
+      text-align:center;
+    }
+
+    .purchase h2{
+      max-width:850px;
+      margin:0 auto;
+    }
+
+    .purchase p{
+      max-width:680px;
+      margin:28px auto 0;
+      color:var(--muted);
+      font-size:19px;
+      line-height:1.55;
+    }
+
+    .button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:36px;
+      padding:15px 24px;
+      border-radius:999px;
+      background:#f5f5f7;
+      color:#000;
+      font-size:15px;
+      font-weight:700;
+      transition:transform .2s ease, opacity .2s ease;
+    }
+
+    .button:hover{
+      transform:translateY(-1px);
+      opacity:.92;
+    }
+
+    .fineprint{
+      margin-top:18px !important;
+      font-size:13px !important;
+    }
+
+    footer{
+      padding:34px 0 48px;
+      color:#77777d;
+      font-size:13px;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:20px;
+    }
+
+    @media (max-width:800px){
+      .wrap{
+        width:min(var(--max), calc(100% - 32px));
+      }
+
+      .nav-links{
+        gap:14px;
+        font-size:13px;
+      }
+
+      .hero{
+        min-height:75vh;
+        padding-top:90px;
+      }
+
+      .section-head,
+      .events,
+      .compare{
+        grid-template-columns:1fr;
+      }
+
+      .section-head{
+        gap:22px;
+      }
+
+      section{
+        padding:90px 0;
+      }
+
+      .event{
+        min-height:280px;
+      }
+
+      .tier{
+        padding:30px;
+      }
+    }
+
+    @media (max-width:540px){
+      .nav-links a:nth-child(2){
+        display:none;
+      }
+
+      h1{
+        font-size:clamp(54px, 19vw, 92px);
+      }
+
+      .hero-copy{
+        font-size:21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html">MoodClock</a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#experience">Sound</a>
+        <a href="#unlock">Unlock</a>
+        <a href="index.html">Back to MoodClock</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <main>
+
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">MoodClock Audio</p>
+
+        <h1>Time has<br>a voice.</h1>
+
+        <p class="hero-copy">
+          MoodClock does not tick at you. It waits. Then, when time moves,
+          the machine moves with it.
+        </p>
+
+        <div class="hero-note">
+          <span class="pulse" aria-hidden="true"></span>
+          Built around the events of the clock.
+        </div>
+      </div>
+    </section>
+
+
+    <section id="experience">
+      <div class="wrap">
+
+        <div class="section-head">
+          <div class="section-kicker">The Sound System</div>
+
+          <div>
+            <h2>Sound belongs to the machine.</h2>
+            <p class="lede">
+              Each sound is tied to something the clock actually does.
+              No soundtrack. No arbitrary chimes. No constant ticking.
+              Silence is part of the mechanism.
+            </p>
+          </div>
+        </div>
+
+
+        <div class="events">
+
+          <article class="event">
+            <div class="event-number">01 / MINUTE</div>
+            <div>
+              <h3>The minute transforms.</h3>
+              <p>
+                Mechanical tension, movement and impact accompany the
+                physical transformation into the next minute.
+              </p>
+            </div>
+          </article>
+
+          <article class="event">
+            <div class="event-number">02 / PULSE</div>
+            <div>
+              <h3>The machine answers.</h3>
+              <p>
+                A low, expanding acoustic consequence follows the visual pulse —
+                subtle on the phone, deeper through headphones and larger systems.
+              </p>
+            </div>
+          </article>
+
+          <article class="event">
+            <div class="event-number">03 / HOUR</div>
+            <div>
+              <h3>Something larger moves.</h3>
+              <p>
+                The hour event carries more weight: a larger release,
+                deeper body and longer mechanical decay.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section id="unlock">
+      <div class="wrap">
+
+        <div class="section-head">
+          <div class="section-kicker">Audio Unlock</div>
+
+          <div>
+            <h2>Know exactly what you’re unlocking.</h2>
+            <p class="lede">
+              MoodClock should never make you guess what a purchase contains.
+              The free clock remains a complete visual experience. The audio
+              unlock deepens the acoustic immersion through user-selectable audio soundscape.  
+            </p>
+          </div>
+        </div>
+
+
+        <div class="compare">
+
+          <div class="tier">
+            <span class="tier-label">Included</span>
+            <h3>MoodClock</h3>
+            <p>The complete visual clock and its core behavior.</p>
+
+            <ul>
+              <li>Full visual MoodClock experience</li>
+              <li>Minute transformation</li>
+              <li>Hour movement</li>
+              <li>Pulse animation</li>
+              <li>Core timekeeping behavior</li>
+            </ul>
+          </div>
+
+
+          <div class="tier premium">
+            <span class="tier-label">Full Audio Unlock</span>
+            <h3>The machine speaks.</h3>
+            <p>
+              A richer, layered sound system designed around MoodClock’s
+              mechanical events.  MoodClock plus FULL AUDIO gives you:
+            </p>
+
+            <ul>
+              <li>Expanded minute-event soundscape</li>
+              <li>Deeper hour-event sound design</li>
+              <li>Low-frequency mechanical body</li>
+              <li>Additional texture and resonant detail</li>
+              <li>Greater depth on headphones and full-range systems</li>
+              <li>Future audio refinements within this unlock*</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <section>
+      <div class="wrap manifesto">
+        <blockquote>
+          The clock remains quiet until time gives it a reason not to be.
+        </blockquote>
+
+        <p>
+          MoodClock is not trying to fill the room with sound. The purpose of
+          the audio system is to make temporal events feel physical — as though
+          a real mechanism has changed state somewhere inside the device. 
+          
+          <p>Tested with 200 watt, 7.1 surround sound audio, Klipsch speakers 
+            and 400 watt subwoofer through iPhone's <i>Bluetooth audio</i> connection. 
+        </p>
+        <p>
+          <p>
+            Socks blown off!! 
+            <p>
+              <p>
+            Of course you can turn the volume down.
+      </div>
+    </section>
+
+
+    <section class="purchase">
+      <div class="wrap">
+
+        <p class="eyebrow">Full Audio Experience</p>
+
+        <h2>Unlock the rest of the machine.</h2>
+
+        <p>
+          The final purchase price and exact feature list will appear here
+          before release. No mystery purchase. No vague “premium” label.
+        </p>
+
+        <a class="button" href="#">
+          Audio Unlock — Coming Soon
+        </a>
+
+        <p class="fineprint">
+          * Final inclusion of future audio additions will be defined before launch.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>© 2026 MoodClock</div>
+
+      <div class="footer-links">
+        <a href="index.html">MoodClock</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="mailto:">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
