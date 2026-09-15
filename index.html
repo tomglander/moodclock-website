@@ -66,6 +66,7 @@
     .hero-video{
       display:block;
       width:min(720px,92vw);
+      height:auto;
       aspect-ratio:1 / 1;
       object-fit:contain;
       margin:32px auto 0;
@@ -197,15 +198,20 @@
         The minute begins at 21. Then the machine takes over.
       </p>
       <video
+        id="moodclock-hero"
         class="hero-video"
         autoplay
         muted
         loop
         playsinline
-        preload="metadata"
+        webkit-playsinline
+        preload="auto"
+        disablepictureinpicture
+        poster="./moodclock-square-hero-poster.png"
         aria-label="MoodClock mechanical clock in motion"
       >
-        <source src="moodclock-square-hero-web.mp4" type="video/mp4">
+        <source src="./moodclock-square-hero-web.mp4?v=2" type="video/mp4">
+        Your browser does not support HTML5 video.
       </video>
     </div>
   </header>
@@ -278,6 +284,20 @@
       </div>
     </div>
   </footer>
+
+
+  <script>
+    const moodClockHero = document.getElementById('moodclock-hero');
+    if (moodClockHero) {
+      moodClockHero.muted = true;
+      const startHero = () => {
+        const p = moodClockHero.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      };
+      if (moodClockHero.readyState >= 2) startHero();
+      else moodClockHero.addEventListener('loadeddata', startHero, { once: true });
+    }
+  </script>
 
 </body>
 </html>
