@@ -170,44 +170,6 @@
       line-height:1.55;
     }
 
-    .events{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-    }
-
-    .event{
-      min-height:340px;
-      padding:34px;
-      border:1px solid var(--line);
-      border-radius:26px;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.08), transparent 45%),
-        var(--panel);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-
-    .event-number{
-      color:var(--muted);
-      font-size:12px;
-      letter-spacing:.16em;
-    }
-
-    .event h3{
-      margin:0 0 14px;
-      font-size:28px;
-      letter-spacing:-.03em;
-    }
-
-    .event p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.55;
-      font-size:16px;
-    }
-
     .compare{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -370,7 +332,6 @@
       }
 
       .section-head,
-      .events,
       .compare{
         grid-template-columns:1fr;
       }
@@ -381,10 +342,6 @@
 
       section{
         padding:90px 0;
-      }
-
-      .event{
-        min-height:280px;
       }
 
       .tier{
@@ -415,13 +372,11 @@
       <a class="brand" href="index.html">MoodClock</a>
 
       <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#experience">Sound</a>
         <a href="#unlock">Unlock</a>
         <a href="index.html">Back to MoodClock</a>
       </nav>
     </div>
   </header>
-
 
   <main>
 
@@ -443,64 +398,6 @@
       </div>
     </section>
 
-
-    <section id="experience">
-      <div class="wrap">
-
-        <div class="section-head">
-          <div class="section-kicker">The Sound System</div>
-
-          <div>
-            <h2>Sound belongs to the machine.</h2>
-            <p class="lede">
-              Each sound is tied to something the clock actually does.
-              No soundtrack. No arbitrary chimes. No constant ticking.
-              Silence is part of the mechanism.
-            </p>
-          </div>
-        </div>
-
-
-        <div class="events">
-
-          <article class="event">
-            <div class="event-number">01 / MINUTE</div>
-            <div>
-              <h3>The minute transforms.</h3>
-              <p>
-                Mechanical tension, movement and impact accompany the
-                physical transformation into the next minute.
-              </p>
-            </div>
-          </article>
-
-          <article class="event">
-            <div class="event-number">02 / PULSE</div>
-            <div>
-              <h3>The machine answers.</h3>
-              <p>
-                A low, expanding acoustic consequence follows the visual pulse —
-                subtle on the phone, deeper through headphones and larger systems.
-              </p>
-            </div>
-          </article>
-
-          <article class="event">
-            <div class="event-number">03 / HOUR</div>
-            <div>
-              <h3>Something larger moves.</h3>
-              <p>
-                The hour event carries more weight: a larger release,
-                deeper body and longer mechanical decay.
-              </p>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-
     <section id="unlock">
       <div class="wrap">
 
@@ -512,11 +409,10 @@
             <p class="lede">
               MoodClock should never make you guess what a purchase contains.
               The free clock remains a complete visual experience. The audio
-              unlock deepens the acoustic immersion through user-selectable audio soundscape.  
+              unlock expands the machine into a deeper acoustic one.
             </p>
           </div>
         </div>
-
 
         <div class="compare">
 
@@ -534,13 +430,12 @@
             </ul>
           </div>
 
-
           <div class="tier premium">
             <span class="tier-label">Full Audio Unlock</span>
             <h3>The machine speaks.</h3>
             <p>
               A richer, layered sound system designed around MoodClock’s
-              mechanical events.  MoodClock plus FULL AUDIO gives you:
+              mechanical events.
             </p>
 
             <ul>
@@ -558,7 +453,6 @@
       </div>
     </section>
 
-
     <section>
       <div class="wrap manifesto">
         <blockquote>
@@ -568,20 +462,10 @@
         <p>
           MoodClock is not trying to fill the room with sound. The purpose of
           the audio system is to make temporal events feel physical — as though
-          a real mechanism has changed state somewhere inside the device. 
-          
-          <p>Tested with 200 watt, 7.1 surround sound audio, Klipsch speakers 
-            and 400 watt subwoofer through iPhone's <i>Bluetooth audio</i> connection. 
+          a real mechanism has changed state somewhere inside the device.
         </p>
-        <p>
-          <p>
-            Socks blown off!! 
-            <p>
-              <p>
-            Of course you can turn the volume down.
       </div>
     </section>
-
 
     <section class="purchase">
       <div class="wrap">
@@ -607,7 +491,6 @@
     </section>
 
   </main>
-
 
   <footer>
     <div class="wrap footer-row">
