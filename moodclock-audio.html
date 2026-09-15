@@ -408,7 +408,7 @@
 
         <div class="sample-card">
           <audio id="hour-audio" preload="none">
-            <source src="Audio/moodclock-top-of-hour.mp3" type="audio/mpeg">
+            <source src="audio/moodclock-top-of-hour.mp3?v=2" type="audio/mpeg">
           </audio>
 
           <button class="sample-play" id="hour-play" type="button" aria-label="Play top of the hour sound">
@@ -542,24 +542,50 @@
         label.textContent = 'Listen';
       };
 
-      hourPlay.addEventListener('click', () => {
-        if (hourAudio.paused) {
-          hourAudio.currentTime = 0;
-          hourAudio.play().then(() => {
+      const setError = () => {
+        icon.textContent = '!';
+        label.textContent = 'Audio unavailable';
+        hourPlay.disabled = true;
+        console.error(
+          'MoodClock audio failed to load:',
+          hourAudio.currentSrc || 'audio/moodclock-top-of-hour.mp3'
+        );
+      };
+
+      hourAudio.addEventListener('loadeddata', () => {
+        hourPlay.disabled = false;
+        setStopped();
+        console.info('MoodClock audio loaded:', hourAudio.currentSrc);
+      });
+
+      hourAudio.addEventListener('error', () => {
+        const mediaError = hourAudio.error;
+        console.error('MoodClock audio element error:', mediaError);
+        setError();
+      });
+
+      hourPlay.addEventListener('click', async () => {
+        try {
+          if (hourAudio.paused) {
+            hourAudio.currentTime = 0;
+            await hourAudio.play();
             icon.textContent = '■';
             label.textContent = 'Stop';
-          }).catch(() => {});
-        } else {
-          hourAudio.pause();
-          hourAudio.currentTime = 0;
-          setStopped();
+          } else {
+            hourAudio.pause();
+            hourAudio.currentTime = 0;
+            setStopped();
+          }
+        } catch (error) {
+          console.error('MoodClock audio play() failed:', error);
+          setError();
         }
       });
 
       hourAudio.addEventListener('ended', setStopped);
-      hourAudio.addEventListener('pause', () => {
-        if (hourAudio.currentTime === 0) setStopped();
-      });
+
+      // Explicitly request the file after page load so failures surface clearly.
+      hourAudio.load();
     }
   </script>
 
