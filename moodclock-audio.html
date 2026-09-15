@@ -477,10 +477,15 @@
         </p>
 
         <div class="sample-card">
-          <audio controls preload="none">
+          <audio id="hour-audio" preload="none">
             <source src="Audio/moodclock-top-of-hour.mp3" type="audio/mpeg">
-            Your browser does not support HTML5 audio.
           </audio>
+
+          <button class="sample-play" id="hour-play" type="button" aria-label="Play top of the hour sound">
+            <span class="icon" aria-hidden="true">▶</span>
+            <span class="label">Listen</span>
+          </button>
+
           <p class="sample-note">Optional listening. Nothing on this page plays automatically.</p>
         </div>
       </div>
@@ -522,6 +527,41 @@
       </div>
     </div>
   </footer>
+
+
+  <script>
+    const hourAudio = document.getElementById('hour-audio');
+    const hourPlay = document.getElementById('hour-play');
+
+    if (hourAudio && hourPlay) {
+      const icon = hourPlay.querySelector('.icon');
+      const label = hourPlay.querySelector('.label');
+
+      const setStopped = () => {
+        icon.textContent = '▶';
+        label.textContent = 'Listen';
+      };
+
+      hourPlay.addEventListener('click', () => {
+        if (hourAudio.paused) {
+          hourAudio.currentTime = 0;
+          hourAudio.play().then(() => {
+            icon.textContent = '■';
+            label.textContent = 'Stop';
+          }).catch(() => {});
+        } else {
+          hourAudio.pause();
+          hourAudio.currentTime = 0;
+          setStopped();
+        }
+      });
+
+      hourAudio.addEventListener('ended', setStopped);
+      hourAudio.addEventListener('pause', () => {
+        if (hourAudio.currentTime === 0) setStopped();
+      });
+    }
+  </script>
 
 </body>
 </html>
