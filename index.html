@@ -65,9 +65,8 @@
     }
     .hero-video{
       display:block;
-      width:min(760px,92vw);
-      height:auto;
-      max-height:78vh;
+      width:min(720px,92vw);
+      aspect-ratio:1 / 1;
       object-fit:contain;
       margin:32px auto 0;
       background:#000;
@@ -204,10 +203,9 @@
         loop
         playsinline
         preload="metadata"
-        poster="moodclock-hero-poster.png"
         aria-label="MoodClock mechanical clock in motion"
       >
-        <source src="moodclock-hero.mp4" type="video/mp4">
+        <source src="moodclock-square-hero-web.mp4" type="video/mp4">
       </video>
     </div>
   </header>
@@ -217,8 +215,8 @@
       <div class="wrap">
         <h2 class="section-title">21 becomes 22.</h2>
         <p class="section-copy">
-          At the turn of the minute, 21 collapses and fragments.
-          A pulse moves outward. The fragments return and reform as 22.
+          At the turn of the minute, 21 collapses. The mechanism advances.
+          A pulse moves outward. The fragments return and reform as 35.
         </p>
 
         <div class="sequence">
@@ -272,7 +270,7 @@
 
   <footer>
     <div class="wrap footer-row">
-      <div>© 2026 Tom Glander - MoodClock</div>
+      <div>© 2026 MoodClock</div>
       <div class="footer-links">
         <a href="moodclock-audio.html">Audio</a>
         <a href="privacy.html">Privacy</a>
